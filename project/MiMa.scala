@@ -1228,7 +1228,13 @@ object MiMa extends AutoPlugin {
         ProblemFilters.exclude[IncompatibleResultTypeProblem]("akka.cluster.sharding.ShardRegion.shardBuffers"),
         ProblemFilters.exclude[IncompatibleMethTypeProblem]("akka.cluster.sharding.ShardRegion.shardBuffers_=")
       ),
-      "2.4.18" -> Seq()
+      "2.4.18" -> Seq(),
+      "2.4.19" -> Seq(
+         // #22129 Framing, custom frame size
+         ProblemFilters.exclude[IncompatibleMethTypeProblem]("akka.stream.javadsl.Framing.lengthField"),
+         ProblemFilters.exclude[IncompatibleMethTypeProblem]("akka.stream.javadsl.Framing.delimiter"),
+         ProblemFilters.exclude[IncompatibleMethTypeProblem]("akka.stream.javadsl.Framing.simpleFramingProtocol")
+      )
       // make sure that
       //  * this list ends with the latest released version number
       //  * is kept in sync with the master branch
